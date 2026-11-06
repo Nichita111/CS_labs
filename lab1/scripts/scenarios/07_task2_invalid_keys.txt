@@ -1,0 +1,10 @@
+2
+e
+40
+7
+cheie
+parola123
+cheie secreta
+securitate
+Laboratorul de criptografie
+0
