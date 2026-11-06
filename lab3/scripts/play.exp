@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+# Usage (from lab1/): expect scripts/play.exp scripts/scenarios/NN_name.txt
+# Starts main.py in a pseudo-terminal and types each line of the scenario
+# file at the next prompt, so the session looks exactly like manual input.
+
+set timeout 10
+encoding system utf-8
+fconfigure stdout -encoding utf-8
+
+set f [open [lindex $argv 0] r]
+fconfigure $f -encoding utf-8
+set lines [split [string trimright [read $f] "\n"] "\n"]
+close $f
+
+spawn -noecho python3 main.py
+fconfigure $spawn_id -encoding utf-8
+
+foreach line $lines {
+    # Every prompt of the program ends with "› " (U+203A), possibly with a colour reset before the space.
+    expect {
+        -re {\u203a(\x1b\[0m)? $} {}
+        timeout { puts "\n\[play.exp] no prompt before input '$line'"; exit 1 }
+    }
+    sleep 0.4
+    send -- "$line\r"
+}
+expect eof
