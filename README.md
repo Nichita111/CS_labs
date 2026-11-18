@@ -7,3 +7,4 @@
 | 1 | Caesar cipher and Caesar cipher with a permutation | [report](lab1/REPORT.md) |
 | 2 | Cryptanalysis of monoalphabetic ciphers (variant 19) | [report](lab2/REPORT.md) |
 | 3 | Polyalphabetic ciphers: Playfair | [report](lab3/REPORT.md) |
+| 4 | Block ciphers: DES (task 2.8) | [report](lab4/REPORT.md) |
